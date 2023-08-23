@@ -12,7 +12,9 @@ function App() {
 
     return (
         <>
+            <NavBar />
             <ChatBox />
+            <SendMessage />
         </>
     )
 }
