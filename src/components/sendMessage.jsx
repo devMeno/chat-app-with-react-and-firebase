@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { auth, db } from "./firebase"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import axios from "axios";
 
 export default function SendMessage() {
      const [message, setMessage] = useState('');
+     const data = new FormData();
 
      function handleMessageChange(e) {
           setMessage(e.target.value);
@@ -11,24 +11,40 @@ export default function SendMessage() {
 
      const sendMessage = async (e) => {
           e.preventDefault();
-          if (message.trim === "") {
-               return alert('Vous ne pouvez pas envoyer un message ne contenant aucun caractère !');
+
+          /*let datas = {
+               aut: 'DevMeno',
+               text: message
           }
-          const { uid, displayName, photoURL } = auth.currentUser;
-          await addDoc(collection(db, "messages"), {
-               text: message,
-               name: displayName,
-               avatar: photoURL,
-               createdAt: serverTimestamp(),
-               uid
-          });
+          for (let key in datas) {
+               data.append(key, datas[key]);
+          }*/
+          try {
+               let config = {
+                    headers: {
+                         authorization: "Authorization Token ",
+                         "Accept": "application/json",
+                         "Content-Type": "multipart/form-data",
+                         "Access-Control-Allow-Origin": "*",
+                         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+                    }
+               }
+               await axios.post('http://localhost:3000/chat_app/backend/addMessage.php', {
+                    auth: 'aia',
+                    text: message
+               }, config)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
+          } catch (err) {
+               console.log(err)
+          }
           setMessage('');
      };
 
      return (
-          <form action="">
-               <input type="text" onChange={handleMessageChange} value={message} />
-               <button type="submit" onClick={sendMessage}>Envoyer</button>
+          <form action="" className="bottom-0 fixed py-4 grid grid-cols-5 bg-red-300">
+               <input type="text" placeholder="Envoyer un message..." onChange={handleMessageChange} value={message} className="col-span-4 bg-gray-200 h-9 px-3 rounded-2xl mx-2" />
+               <button type="submit text-center" onClick={sendMessage} className="bg-blue-500 rounded-2xl text-center h-9 mx-2 ">Envoyer</button>
           </form>
      )
-} 
+}

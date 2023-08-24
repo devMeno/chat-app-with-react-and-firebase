@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { query, collection, orderBy, onSnapshot, limit, QuerySnapshot, } from "firebase/firestore";
 import { db } from "./firebase";
-import Message from "./message";
 import SendMessage from "./sendMessage";
 import axios from "axios";
 
@@ -43,7 +42,7 @@ export default function ChatBox() {
           };
           getCustomersData();
           console.log(messages)
-     }, [])
+     })
 
 
 
@@ -69,14 +68,15 @@ export default function ChatBox() {
      //console.log(typeof (messages))
      return (
           <>
-               <h1>Bouuuu</h1>
-               <h1>Messages</h1>
-               <ul>
-                    {messages.map(message => (
-                         <li key={message.id}>{message.texte}</li>
-                    ))}
-               </ul>
+               <div className="flex m-auto">
+                    <ul>
+                         {messages.map(message => (
+                              <div className={(message.auteur === 'aia' ? 'flex justify-end' : '')}>
+                                   <li className={"w-fit bg-blue-300 m-1 p-2 rounded-lg" + (message.auteur === 'aia' ? ' bg-blue-500 text-right' : ' bg-gray-200')} key={message.id}>{message.texte}</li>
+                              </div>
+                         ))}
+                    </ul>
+               </div>
           </>
      )
-
 }
