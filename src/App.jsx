@@ -4,6 +4,8 @@ import NavBar from './components/navbar'
 import Welcome from './components/welcome'
 import ChatBox from './components/chatbox'
 import SendMessage from './components/sendMessage'
+import Login from './components/login'
+import Registration from './components/registration'
 
 
 function App() {
@@ -12,9 +14,7 @@ function App() {
     return (
         <>
             <div className="m-auto w-3/6">
-                <NavBar />
-                <ChatBox />
-                <SendMessage />
+                <Login />
             </div>
         </>
     )
