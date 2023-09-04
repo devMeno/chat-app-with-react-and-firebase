@@ -5,16 +5,19 @@ header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Headers : *");
 include("connexionToDB.php");
 
-$requete = "SELECT * FROM users WHERE adresse_email = ?" ;
-$req = $bdd->prepare($requete);
-$req->execute(array($_POST['mail']));
-$user = $req->fetchAll();
-//echo json_encode($user);
+if(isset($_POST['mail'],$_POST['mdp'])){
+     $requete = "SELECT * FROM users WHERE adresse_email = ?" ;
+     $req = $bdd->prepare($requete);
+     $req->execute(array($_POST['mail']));
+     $user = $req->fetchAll();
+     //echo json_encode($user);
 
-foreach($user as $possibleUser) {
+     foreach($user as $possibleUser) {
      if($possibleUser['mot_de_passe'] === $_POST['mdp']){
-          echo 'ok';
+          //echo json_encode($possibleUser);
+          echo 'Bonjour atassinon';
           break;
+     }
      }
 }
 

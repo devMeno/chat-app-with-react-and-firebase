@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SendMessage from "./sendMessage";
 
 export default function Login() {
      const [email, setEmail] = useState('');
@@ -41,8 +42,8 @@ export default function Login() {
                               .then(data => {
                                    console.log(data.data);
                                    //setMessages(data.data);
-                                   if (data.data = 'ok') {
-                                        alert('connexion réussie!')
+                                   if (data.status = 200) {
+                                        alert('Connexion réussie monsieur');
                                    }
                               })
                               .catch(error => console.log(error)
