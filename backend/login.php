@@ -5,7 +5,10 @@ header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Headers : *");
 include("connexionToDB.php");
 
+
+
 if(isset($_POST['mail'],$_POST['mdp'])){
+     echo 'Bonjour';
      $requete = "SELECT * FROM users WHERE adresse_email = ?" ;
      $req = $bdd->prepare($requete);
      $req->execute(array($_POST['mail']));
@@ -15,7 +18,7 @@ if(isset($_POST['mail'],$_POST['mdp'])){
      foreach($user as $possibleUser) {
      if($possibleUser['mot_de_passe'] === $_POST['mdp']){
           //echo json_encode($possibleUser);
-          echo 'Bonjour atassinon';
+          echo 'Bonjour atassinon tché';
           break;
      }
      }

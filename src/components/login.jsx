@@ -36,7 +36,7 @@ export default function Login() {
                          .catch(err => console.log(err)
                          );
 
-                    const getCustomersData = () => {
+                    /*const getCustomersData = () => {
                          axios
                               .get("http://localhost:3000/chat_app/backend/login.php")
                               .then(data => {
@@ -49,7 +49,7 @@ export default function Login() {
                               .catch(error => console.log(error)
                               );
                     };
-                    getCustomersData();
+                    getCustomersData();*/
                     //console.log(messages)
                } catch (err) {
                     console.log(err)
