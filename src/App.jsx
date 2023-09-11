@@ -14,7 +14,7 @@ function App() {
     return (
         <>
             <div className="m-auto w-3/6">
-                <Login />
+                <ChatBox />
             </div>
         </>
     )

@@ -13,18 +13,18 @@ export default function ChatBox() {
      useEffect(() => {
           const getCustomersData = () => {
                axios
-                    .get("http://localhost:3000/chat_app/backend/getMessages.php")
+                    .get("http://localhost:3000/backend/getMessages.php")
                     .then(data => {
-                         //console.log(data.data);
+                         console.log(data.data);
                          setMessages(data.data);
                     })
                     .catch(error => console.log(error));
           };
           getCustomersData();
-          //console.log(messages);
+          console.log(messages);
      })
 
-     useEffect(() => {
+     /*useEffect(() => {
           const getUsersData = () => {
                axios
                     .get("http://localhost:3000/chat_app/backend/login.php")
@@ -39,7 +39,7 @@ export default function ChatBox() {
                     );
           };
           getUsersData();
-     })
+     })*/
 
 
      return (
