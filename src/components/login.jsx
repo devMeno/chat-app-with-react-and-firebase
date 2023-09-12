@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SendMessage from "./sendMessage";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
      const [email, setEmail] = useState('');
      const [mdp, setMdp] = useState('');
+     const navigate = useNavigate();
+
+     const handleGoToRegistration = () => {
+          navigate('/registration');
+     }
+
+     const handleGoToChatbox = () => {
+          navigate('/bloc');
+     }
 
      function handleEmailChange(e) {
           setEmail(e.target.value);
@@ -36,20 +46,21 @@ export default function Login() {
                          .catch(err => console.log(err)
                          );
 
-                    /*const getCustomersData = () => {
+                    const getCustomersData = () => {
                          axios
-                              .get("http://localhost:3000/chat_app/backend/login.php")
+                              .get("http://localhost:3000/backend/login.php")
                               .then(data => {
                                    console.log(data.data);
                                    //setMessages(data.data);
                                    if (data.status = 200) {
                                         alert('Connexion réussie monsieur');
+                                        handleGoToChatbox();
                                    }
                               })
                               .catch(error => console.log(error)
                               );
                     };
-                    getCustomersData();*/
+                    getCustomersData();
                     //console.log(messages)
                } catch (err) {
                     console.log(err)
@@ -127,7 +138,7 @@ export default function Login() {
 
                          <p className="mt-10 text-center text-sm text-gray-500">
                               Not a member?{' '}
-                              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500" onClick={handleGoToRegistration}>
                                    Register
                               </a>
                          </p>

@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Registration() {
      const [email, setEmail] = useState('');
      const [username, setUsername] = useState('');
      const [mdp, setMdp] = useState('');
      const [mdpConfirm, setMdpConfirm] = useState('');
+     const navigate = useNavigate();
+
+     const handleGoToLogin = () => {
+          navigate('/');
+     }
 
      function handleEmailChange(e) {
           setEmail(e.target.value);
@@ -52,6 +58,7 @@ export default function Registration() {
                setUsername('');
                setMdp('');
                setMdpConfirm('');
+               handleGoToLogin();
           } else {
                alert('Please enter the same passsword!')
           }

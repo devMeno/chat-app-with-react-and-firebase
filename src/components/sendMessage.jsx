@@ -22,7 +22,7 @@ export default function SendMessage() {
                          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
                     }
                }
-               await axios.post('http://localhost:3000/chat_app/backend/addMessage.php', {
+               await axios.post('http://localhost:3000/backend/addMessage.php', {
                     auth: 'aia',
                     text: message
                }, config)
