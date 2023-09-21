@@ -8,6 +8,7 @@ include("connexionToDB.php");
 
 
 if(isset($_POST['mail'],$_POST['mdp'])){
+     //echo "Bonjour";
      
      $requete = "SELECT * FROM users WHERE adresse_email = ?" ;
      $req = $bdd->prepare($requete);

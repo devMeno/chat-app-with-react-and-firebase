@@ -8,6 +8,7 @@ import Login from './components/login'
 import Registration from './components/registration'
 import { Route, Routes } from 'react-router-dom'
 import Bloc from './components/bloc'
+import UsersList from './components/users'
 
 function App() {
     return (
@@ -20,3 +21,10 @@ function App() {
 }
 
 export default App
+
+
+//<Routes>
+//<Route path='/' Component={Login} />
+//<Route path='/registration' Component={Registration} />
+//<Route path='/bloc' Component={Bloc} />
+//</Routes>

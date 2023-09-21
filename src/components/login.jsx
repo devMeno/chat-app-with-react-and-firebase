@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import SendMessage from "./sendMessage";
 import { useNavigate } from "react-router-dom";
+import { data } from "autoprefixer";
 
 export default function Login() {
      const [email, setEmail] = useState('');
@@ -38,36 +39,25 @@ export default function Login() {
                               "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
                          }
                     }
-                    await axios.post('http://localhost:3000/chat_app/backend/login.php', {
+                    await axios.post('http://localhost:3000/backend/login.php', {
                          mail: email,
                          mdp: mdp
                     }, config)
-                         .then(res => console.log(res))
+                         .then((res) => {
+                              if (res.status === 200) {
+                                   const userId = res;
+                                   handleGoToChatbox();
+                              }
+                         })
                          .catch(err => console.log(err)
                          );
 
-                    const getCustomersData = () => {
-                         axios
-                              .get("http://localhost:3000/backend/login.php")
-                              .then(data => {
-                                   console.log(data.data);
-                                   //setMessages(data.data);
-                                   if (data.status = 200) {
-                                        alert('Connexion réussie monsieur');
-                                        handleGoToChatbox();
-                                   }
-                              })
-                              .catch(error => console.log(error)
-                              );
-                    };
-                    getCustomersData();
-                    //console.log(messages)
                } catch (err) {
                     console.log(err)
                }
 
           } else {
-               alert('Please enter the same passsword!')
+               alert('Veuillez remplir tous les champs')
           }
      }
 
