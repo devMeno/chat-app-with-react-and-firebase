@@ -5,14 +5,13 @@ header('Access-Control-Allow-Origin:*');
 header("Access-Control-Allow-Headers : *");
 include("connexionToDB.php");
 
-$author = $_POST['auth'];
-$chat = $_POST['text'];
 
-$requete = "INSERT INTO messages(auteur,texte) VALUES(:author,:chat)";
+$requete = "INSERT INTO messages(conversationID,userID,messageContent) VALUES(:discussion,:author,:chat)";
 $insert = $bdd->prepare($requete);
 $insert->execute(array(
-     'author' => $author,
-     'chat' => $chat
+     'discussion' => $_POST['convID'],
+     'author' => $_POST['auth'],
+     'chat' => $_POST['text']
 ));
 
 echo $author;

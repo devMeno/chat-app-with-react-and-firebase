@@ -1,10 +1,5 @@
-import { auth } from './firebase'
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function NavBar() {
-
-     const [user] = useAuthState(auth);
-
 
      return (
           <>

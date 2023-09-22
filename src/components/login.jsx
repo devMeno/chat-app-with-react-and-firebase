@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import SendMessage from "./sendMessage";
 import { useNavigate } from "react-router-dom";
 import { data } from "autoprefixer";
 
